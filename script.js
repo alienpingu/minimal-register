@@ -62,7 +62,7 @@ validateField = (c, v) => {
     let result
     let bkv = v;
     if (c === 'telefono') {
-    	v = "" + state.prefix + v;
+    	v = state.prefix + v;
     }
 
 
@@ -120,6 +120,7 @@ validateField = (c, v) => {
 
                         break;
                     case 'telefono':
+
                         if (document.querySelector('#telefonoRegister').classList.contains('invalid')) {
                             document.querySelector('#telefonoRegister').classList.remove('invalid');
                         }
@@ -128,6 +129,8 @@ validateField = (c, v) => {
                             document.querySelector('#telefonoRegister').classList.add('valid');
                         }
 
+                        document.querySelector('#phoneHelp').style.display = 'none';
+
                         state.validate.phone = true;
                         state.phone = bkv;
                         console.log('📞 Valid - Value: ', state.phone);
@@ -135,6 +138,7 @@ validateField = (c, v) => {
 
             } else {
                 switch (c) {
+
                     case 'email':
                         if (document.querySelector('#emailRegister').classList.contains('valid')) {
                             document.querySelector('#emailRegister').classList.remove('valid');
@@ -150,7 +154,9 @@ validateField = (c, v) => {
                         state.email = null;
 
                         break;
+
                     case 'telefono':
+
                         if (document.querySelector('#telefonoRegister').classList.contains('valid')) {
                             document.querySelector('#telefonoRegister').classList.remove('valid');
                         }
@@ -158,6 +164,8 @@ validateField = (c, v) => {
                         if (!document.querySelector('#telefonoRegister').classList.contains('invalid')) {
                             document.querySelector('#telefonoRegister').classList.add('invalid');
                         }
+
+                        document.querySelector('#phoneHelp').style.display = 'block';
 
                         state.validate.phone = false;
                         state.phone = null;
