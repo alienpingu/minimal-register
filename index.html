@@ -33,6 +33,9 @@
 				<p id="emailHelp" class="form-text text-muted" style="transform: rotate(0);">
 				  E-mail già registrata, accedi da <a href="/login" class="stretched-link">questa</a> pagina
 				</p>
+				<p id="emailWarn" class="form-text text-muted text-danger" style="transform: rotate(0);">
+				  Inserisci una email valida
+				</p>
 			</div>
 
 			<div class="form-phone">
@@ -46,7 +49,7 @@
 
 	            </select>
 
-	            <input type="tel" name="telefonoRegister" placeholder="Telefono" id="telefonoRegister" required>
+	            <input type="tel" name="telefonoRegister" placeholder="Telefono" id="telefonoRegister"  onkeypress="return isNumberKey(event)" required>
 
 			</div>
 
@@ -56,14 +59,6 @@
 				<p id="psw1Help" class="form-text text-muted" style="transform: rotate(0);">
 				  La password deve avere almeno una letttera maiuscola, minuscola un numero e lunga almeno 8 caratteri.
 				</p>
-			</div>
-			<div class="form-row">
-
-				<input type="password" placeholder="Repeat password" name="password" id="passwordReg2" required>
-				<p id="psw2Help" class="form-text text-muted" style="transform: rotate(0);">
-				  Le password devono essere identiche
-				</p>
-
 			</div>
 
 			<div class="form-row">

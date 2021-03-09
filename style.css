@@ -65,11 +65,8 @@ body,html {
 .form-row > input.invalid {
 	border: 1px solid #982C45;
 }
-.form-row > input + p.text-muted {
+.form-row > p.text-muted {
 	display: none;
-}
-.form-row > input.invalid + p.text-muted {
- 	display: block;
 }
 
 .form-phone {
