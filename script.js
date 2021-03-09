@@ -15,15 +15,44 @@ let state = {
 }
 
 
-let Register = (e, opt) => {
+let Register = (e) => {
 
 
 	let bool = true;
 
+	let object = state;
+
+	delete object.validate;
+
+
+	for (let property in object) {
+		if(object[property] === null) {
+			bool = false
+		}
+	}
+
 // Check form
+	
+	if (bool) {
+		fetch('https://dev.seasoncycles.com/apiServer/api/data/save', {
+		  method: 'POST',
+		   headers: {
+		    'Content-Type': 'application/json'
+		  },
+		  body: object
+		})
+		.then((response) => response.json())
+		.then((data) => {
+			console.log('🛠 Response: ', data)
+		})
+	} else {
+		document.querySelector('#alert-form').classList.add('active');
+		console.log('🛑 Form incompleto ');
+
+	}
 
 
-	(bool) ? console.log(state) : console.log('🛑 Form incompleto')
+	
 }
 
 validateField = (c, v) => {
