@@ -15,12 +15,20 @@
 
 		</div>
 		<form class="form">
-
 			
 
-			<div class="form-row"><input type="text" name="nomeRegister" placeholder="Nome e Cognome/Azienda" id="NomeRegister"></div>
+			<div class="form-row">
 
-			<div class="form-row"><input type="email" name="emailRegister" placeholder="Email" id="emailRegister"></div>
+				<input type="text" name="nomeRegister" placeholder="Nome e Cognome/Azienda" id="NomeRegister" required>
+
+			</div>
+
+			<div class="form-row">
+				<input type="email" name="emailRegister" placeholder="Email" id="emailRegister" required>
+				<p id="emailHelp" class="form-text text-muted" style="transform: rotate(0);">
+				  E-mail già registrata, accedi da <a href="/login" class="stretched-link">questa</a> pagina
+				</p>
+			</div>
 
 			<div class="form-phone">
 
@@ -33,13 +41,34 @@
 
 	            </select>
 
-	            <input type="tel" name="telefonoRegister" placeholder="Telefono" id="telefonoRegister">
+	            <input type="tel" name="telefonoRegister" placeholder="Telefono" id="telefonoRegister" required>
 
 			</div>
 
-			<div class="form-row"><input type="password" placeholder="Password" name="password" id="passwordReg"></div>
+			<div class="form-row">
 
-			<div class="form-row"><p id="submitBtn" class="btn btn-season btn-block mb-0">Registrati</p></div>
+				<input type="password" placeholder="Password" name="password" id="passwordReg1" required>
+				<p id="psw1Help" class="form-text text-muted" style="transform: rotate(0);">
+				  La password deve avere almeno una letttera maiuscola, minuscola un numero e lunga almeno 8 caratteri.
+				</p>
+			</div>
+			<div class="form-row">
+
+				<input type="password" placeholder="Repeat password" name="password" id="passwordReg2" required>
+				<p id="psw2Help" class="form-text text-muted" style="transform: rotate(0);">
+				  Le password devono essere identiche
+				</p>
+
+			</div>
+
+			<div class="form-row">
+
+				<p id="submitBtn" class="btn btn-lg btn-season btn-block mb-0">
+					<span class="iconify" data-icon="mdi:login-variant" data-inline="false"></span>
+					Register
+				</p>
+
+			</div>
 
 		</form>
 
@@ -49,4 +78,6 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+	<script src="https://asecuritysite.com/sha512.js"></script>
 	<script src="script.js"></script>

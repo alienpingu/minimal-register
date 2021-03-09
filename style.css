@@ -22,6 +22,12 @@ body,html {
 
 } 
 
+.form-text {
+	font-size: 12px;
+    padding-left: 4px;
+    margin-top: -12px;
+}
+
 .form-logo {
 	max-width: 400px;
 	margin-bottom: 80px;
@@ -51,6 +57,19 @@ body,html {
     border-radius: 3px;
     text-align: left;
     margin-bottom: 27px;
+}
+.form-row > .valid, .form-phone > .valid {
+	border: 1px solid #aac254;
+}
+
+.form-row > input.invalid {
+	border: 1px solid #982C45;
+}
+.form-row > input + p.text-muted {
+	display: none;
+}
+.form-row > input.invalid + p.text-muted {
+ 	display: block;
 }
 
 .form-phone {
@@ -87,6 +106,16 @@ body,html {
     text-align: left;
 }
 
+#submitBtn {
+	text-align: left;
+}
+
+#submitBtn svg {
+	width: 1.5rem;
+    height: 1.5rem;
+    margin-top: -4px;
+    margin-right: 12px;
+}
 
 /*Components*/
 
