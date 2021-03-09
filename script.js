@@ -12,6 +12,8 @@ let state = {
     }
 }
 
+var form = document.querySelector("form.form");
+function handleForm(event) { event.preventDefault(); } 
 
 let Register = (e) => {
 
@@ -20,7 +22,6 @@ let Register = (e) => {
 
     let object = state;
 
-    delete object.validate;
 
 
     for (let property in object) {
@@ -32,6 +33,8 @@ let Register = (e) => {
     // Check form
 
     if (bool) {
+    	delete object.validate;
+
         fetch('https://dev.seasoncycles.com/apiServer/api/data/save', {
                 method: 'POST',
                 headers: {
@@ -285,6 +288,7 @@ function isNumberKey(evt) {
 }
 
 window.addEventListener('load', function() {
+	form.addEventListener('submit', handleForm);
 
     document.querySelector('#NomeRegister').addEventListener('change', (e) => {
         validateInput(e.target);

@@ -12,6 +12,8 @@ body,html {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	overflow: none;
+	
 }
 
 #register form.form {
