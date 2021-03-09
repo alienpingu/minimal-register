@@ -5,7 +5,7 @@ let state = {
 	email: null,
 	prefix: +39,
 	state: 'it',
-	phone: null,
+	phone: 39,
 	password: null,
 	validate: {
 		email: false,
@@ -34,13 +34,16 @@ let Register = (e) => {
 // Check form
 	
 	if (bool) {
-		fetch('https://dev.seasoncycles.com/apiServer/api/data/save', {
-		  method: 'POST',
-		   headers: {
-		    'Content-Type': 'application/json'
-		  },
-		  body: object
-		})
+		// post(`https://dev.seasoncycles.com/apiServer/api/data/save?name=${state.name}&email=${state.email}&prefix=${state.prefix}&state=${state.state}&phone=${state.phone}&password=${state.password}`)
+		fetch('https://dev.seasoncycles.com/apiServer/api/data/save',{ 
+				method: 'POST',
+			 	headers: {
+			      'Accept': 'application/json',
+			      'Content-Type': 'application/json'
+			    },
+				body: JSON.stringify(object)
+		}
+		)
 		.then((response) => response.json())
 		.then((data) => {
 			console.log('🛠 Response: ', data)
