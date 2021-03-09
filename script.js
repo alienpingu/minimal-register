@@ -60,6 +60,11 @@ let Register = (e) => {
 validateField = (c, v) => {
 
     let result
+    let bkv = v;
+    if (c === 'telefono') {
+    	v = "" + state.prefix + v;
+    }
+
 
     fetch(`https://dev.seasoncycles.com/apiServer/api/data/validate?campo=${c}&valore=${v}`, {
             method: 'POST',
@@ -124,7 +129,7 @@ validateField = (c, v) => {
                         }
 
                         state.validate.phone = true;
-                        state.phone = v;
+                        state.phone = bkv;
                         console.log('📞 Valid - Value: ', state.phone);
                 }
 
@@ -282,7 +287,7 @@ window.addEventListener('load', function() {
         validateInput(e.target);
         validateSelect(e);
     });
-    document.querySelector('#telefonoRegister').addEventListener('change', (e) => validateField('telefono', (state.prefix + e.target.value)));
+    document.querySelector('#telefonoRegister').addEventListener('change', (e) => validateField('telefono', e.target.value));
     document.querySelectorAll('#passwordReg1, #passwordReg2').forEach((el) => el.addEventListener('change', () => validatePassword()));
     document.querySelector('#submitBtn').addEventListener('click', (e) => Register(e, state));
 
