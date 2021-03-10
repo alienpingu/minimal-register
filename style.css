@@ -130,11 +130,15 @@ body,html {
 
 .alert {
 	width: 100%;
-	display: none;
+	visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+
 }
 
 .alert.active {
-	display: block; 
+	visibility: visible;
+  opacity: 1;
 }
 
 

@@ -34,7 +34,6 @@ let Register = (e) => {
 
     if (bool) {
     	delete object.validate;
-
         fetch('https://dev.seasoncycles.com/apiServer/api/data/save', {
                 method: 'POST',
                 headers: {
@@ -52,6 +51,9 @@ let Register = (e) => {
             })
     } else {
         document.querySelector('#alert-form').classList.add('active');
+        setTimeout(function(){ 
+            document.querySelector('#alert-form').classList.remove('active');
+         }, 3000);
         console.log('🛑 Form incompleto ');
 
     }
