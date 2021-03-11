@@ -115,6 +115,11 @@ body,html {
     margin-right: 12px;
 }
 
+#register .custom-select {
+	width: 400px;
+	margin-top: 24px;
+}
+
 /*Components*/
 
 .btn.btn-season {

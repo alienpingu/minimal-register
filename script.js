@@ -12,7 +12,36 @@ let state = {
     }
 }
 
+let dictionary = {
+	it: {
+		alert: "Compila tutti i campi prima di continuare!",
+		input_name: "Nome e Cognome/Azienda",
+		help_email: "Email già registrata, provare con un' altra",
+		warn_email: "Inserisci una email valida",
+		input_phone: "Telefono",
+		help_phone: "Telefono già registrato, prova con un altro numero!!",
+		help_psw: "La password deve avere almeno una lettera maiuscola, un numero e lunga almeno 8 caratteri.",
+		btn_submit: `<span class="iconify" data-icon="mdi:login-variant" data-inline="false"></span>Registrati`,
+		after_text: "Grazie per esserti registrato, accedi a tutte le funzioni del seguente software mediante la versione desktop."
+
+	},
+	en: {
+		alert: "Fill all input befor submit!",
+		input_name: "Name Surname / Company",
+		help_email: "Email already registered, try another one",
+		warn_email: "Insert valid email",
+		input_phone: "Phone",
+		help_phone: "Phone already registered, try another one",
+		help_psw: "The password must contain at least 8 characters, at least one digit and at least one capital letter",
+		btn_submit: `<span class="iconify" data-icon="mdi:login-variant" data-inline="false"></span>Register`,
+		after_text: "Thank you for registering, access all functions of the following software through the desktop version."
+	}
+}
+
 var form = document.querySelector("form.form");
+var select = document.querySelector('#lang-select');
+
+
 function handleForm(event) { event.preventDefault(); } 
 
 let Register = (e) => {
@@ -45,9 +74,9 @@ let Register = (e) => {
             .then((response) => response.json())
             .then((data) => {
                 console.log('👏 Success')
-                document.querySelector('form.form').innerHTML = `<p class="text-center">
-				Grazie per esserti registrato, accedi a tutte le funzioni del seguente software mediante la versione desktop.
-			</p>`;
+                form.parentNode.removeChild(form);
+                select.parentNode.removeChild(select);
+                document.querySelector('#after-form').classList.remove('d-none');
             })
     } else {
         document.querySelector('#alert-form').classList.add('active');
@@ -289,7 +318,39 @@ function isNumberKey(evt) {
     return true;
 }
 
+
+function setLang(lang) {
+	switch(lang) {
+		case 'en':
+			langHandler(dictionary.en)
+			break;
+		case 'it':
+			langHandler(dictionary.it)
+			break;
+
+	}
+}
+
+function langHandler(dic) {
+
+	document.querySelector('#alert-form').innerText = dic.alert;
+	document.querySelector('#NomeRegister').placeholder = dic.input_name;
+	document.querySelector('#emailHelp').innerText = dic.help_email;
+	document.querySelector('#emailWarn').innerText = dic.warn_email;
+	document.querySelector('#telefonoRegister').placeholder = dic.input_phone;
+	document.querySelector('#phoneHelp').innerText = dic.help_phone;
+	document.querySelector('#psw1Help').innerText = dic.help_psw;
+	document.querySelector('#submitBtn').innerHTML = dic.btn_submit;
+	document.querySelector('#after-form').innerText = dic.after_text;
+
+	console.log('🍭 Lang Update')
+
+}
+
 window.addEventListener('load', function() {
+
+	setLang('it');
+
 	form.addEventListener('submit', handleForm);
 
     document.querySelector('#NomeRegister').addEventListener('change', (e) => {
@@ -304,6 +365,8 @@ window.addEventListener('load', function() {
     document.querySelector('#telefonoRegister').addEventListener('change', (e) => validateField('telefono', e.target.value));
     document.querySelectorAll('#passwordReg1, #passwordReg2').forEach((el) => el.addEventListener('change', () => validatePassword()));
     document.querySelector('#submitBtn').addEventListener('click', (e) => Register(e, state));
+
+    select.addEventListener('change', (e) => setLang(e.target.value));
 
     console.log('✅ Page loaded');
 
